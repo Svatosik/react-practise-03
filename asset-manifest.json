@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Svatosik.github.io/react-practise-03/static/css/main.283c9147.css",
-    "main.js": "/Svatosik.github.io/react-practise-03/static/js/main.c6804af4.js",
-    "index.html": "/Svatosik.github.io/react-practise-03/index.html",
-    "main.283c9147.css.map": "/Svatosik.github.io/react-practise-03/static/css/main.283c9147.css.map",
-    "main.c6804af4.js.map": "/Svatosik.github.io/react-practise-03/static/js/main.c6804af4.js.map"
+    "main.css": "/react-practise-03/static/css/main.283c9147.css",
+    "main.js": "/react-practise-03/static/js/main.c6804af4.js",
+    "index.html": "/react-practise-03/index.html",
+    "main.283c9147.css.map": "/react-practise-03/static/css/main.283c9147.css.map",
+    "main.c6804af4.js.map": "/react-practise-03/static/js/main.c6804af4.js.map"
   },
   "entrypoints": [
     "static/css/main.283c9147.css",
