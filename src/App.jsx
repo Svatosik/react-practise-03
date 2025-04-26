@@ -5,7 +5,7 @@ import "normalize.css";
 //components
 import { Component } from "react";
 import { Section } from "./components/Section/Section";
-import { ContactForm } from './components/ContactForm/ContactForm';
+import { ContactForm } from "./components/ContactForm/ContactForm";
 import { ContactList } from "./components/ContactList/ContactList";
 import { Filter } from "./components/Filter/Filter";
 //libraries
@@ -14,7 +14,7 @@ import { nanoid } from "nanoid";
 class App extends Component {
   state = {
     contacts: [],
-    filteredContacts: null,
+    filter: "",
   };
 
   handleFormSubmit = ({ name, number }) => {
@@ -35,29 +35,35 @@ class App extends Component {
 
   filterHandler = (e) => {
     const value = e.target.value;
-    this.setState((prev) => ({
-      filteredContacts: prev.contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(value.toLowerCase())
-      ),
-    }));
+    this.setState({ filter: value });
   };
 
   handleDelete = (id) => {
     this.setState((prev) => ({
       contacts: prev.contacts.filter((el) => el.id !== id),
-      filteredContacts: prev.filteredContacts.filter((el) => el.id !== id),
     }));
   };
+
+  getVisibleContacts = () => {
+    const { contacts, filter } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+
   render() {
-    const { contacts, filteredContacts } = this.state;
-    const visibleContacts = filteredContacts ?? contacts;
+    const visibleContacts = this.getVisibleContacts();
+
     return (
       <>
         <Section title="Phonebook">
           <ContactForm handleFormSubmit={this.handleFormSubmit} />
         </Section>
         <Section title="Contacts">
-          <Filter filterHandler={this.filterHandler} />
+          <Filter
+            filterHandler={this.filterHandler}
+          />
           <ContactList
             contacts={visibleContacts}
             handleDelete={this.handleDelete}
