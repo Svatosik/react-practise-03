@@ -4,10 +4,10 @@ import "normalize.css";
 
 //components
 import { Component } from "react";
-import { Section } from "./components/Section/Section";
-import { ContactForm } from "./components/ContactForm/ContactForm";
-import { ContactList } from "./components/ContactList/ContactList";
-import { Filter } from "./components/Filter/Filter";
+import { Section } from "./components/Section";
+import { ContactForm } from "./components/ContactForm";
+import { ContactList } from "./components/ContactList";
+import { Filter } from "./components/Filter";
 //libraries
 import { nanoid } from "nanoid";
 
