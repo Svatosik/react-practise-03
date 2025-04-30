@@ -17,6 +17,22 @@ class App extends Component {
     filter: "",
   };
 
+  componentDidMount() {
+    const localContats = JSON.parse(localStorage.getItem("contacts"));
+    if (localContats.length > 0) {
+      this.setState({
+        contacts: localContats,
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevContacts = prevState.contacts;
+    const tempContacts = this.state.contacts;
+    if (prevContacts !== tempContacts) {
+      localStorage.setItem("contacts", JSON.stringify(tempContacts));
+    }
+  }
   handleFormSubmit = ({ name, number }) => {
     const { contacts } = this.state;
     const isAlreadyExist = contacts.find((el) => el.name === name);
@@ -61,9 +77,7 @@ class App extends Component {
           <ContactForm handleFormSubmit={this.handleFormSubmit} />
         </Section>
         <Section title="Contacts">
-          <Filter
-            filterHandler={this.filterHandler}
-          />
+          <Filter filterHandler={this.filterHandler} />
           <ContactList
             contacts={visibleContacts}
             handleDelete={this.handleDelete}
